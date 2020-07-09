@@ -1,16 +1,13 @@
 upload:
   path: D:/static/
 server:
-  #  port: 8082
-  #  address: 127.0.0.1
-  port: 8000
-  address: 0.0.0.0
+    port: 8082
+    address: 127.0.0.1
   servlet:
     context-path: /
 spring:
   datasource:
-    #    url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
-    url: jdbc:oracle:thin:@118.31.11.163:1521:helowin
+        url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
     username: food
     password: 123456
     driver-class-name: oracle.jdbc.driver.OracleDriver
