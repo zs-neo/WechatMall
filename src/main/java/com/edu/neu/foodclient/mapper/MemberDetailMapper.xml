@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.edu.neu.foodclient.mapper.MemberDetailMapper">
+    <select id="getByClientid" resultType="com.edu.neu.foodclient.entity.MemberDetail">
+    select * from memberdetail where clientid=#{clientid}
+  </select>
+
+
+    <insert id="insert" parameterType="com.edu.neu.foodclient.entity.MemberDetail">
+  	insert into memberdetail(clientid,updateamount,description,updatetime)
+    values(#{clientid},#{updateamount},#{description},to_date(#{updatetime},'yyyy-mm-dd hh24:mi:ss'))
+  </insert>
+
+
+
+</mapper>     

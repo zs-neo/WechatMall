@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.edu.neu.foodclient.mapper.ClientMapper">
+
+    <update id="updateClientInfo" parameterType="com.edu.neu.foodclient.entity.Client">
+        update client
+        <set>
+            <if test="username != null">
+                username = #{username},
+            </if>
+            <if test="password != null">
+                password = #{password},
+            </if>
+            <if test="wechat_id != null">
+                wechat_id = #{wechat_id},
+            </if>
+            <if test="phone != null">
+                phone = #{phone},
+            </if>
+            <if test="icon != null">
+                icon = #{icon},
+            </if>
+            <if test="type != null">
+                type = #{type},
+            </if>
+            <if test="state != null">
+                state = #{state},
+            </if>
+            <if test="scores != null">
+                scores = #{scores},
+            </if>
+        </set>
+        where clientid = #{clientid}
+    </update>
+
+</mapper>

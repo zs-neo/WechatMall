@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.edu.neu.foodclient.mapper.MemberMapper">
+
+  <select id="getMember" resultType="com.edu.neu.foodclient.entity.Member">
+          select * from member where clientid=#{clientid}
+  </select>
+
+    <update id="updateAscores" parameterType="com.edu.neu.foodclient.entity.Member">
+        update member
+        <set>
+            <if test="accumulatescores!=null">
+                accumulatescores=#{accumulatescores},
+            </if>
+        </set>
+        where clientid=#{clientid}
+    </update>
+
+    <update id="updateScores" parameterType="com.edu.neu.foodclient.entity.Client">
+        update client
+        <set>
+            <if test="scores!=null">
+                scores=#{scores},
+            </if>
+        </set>
+        where clientid=#{clientid}
+
+    </update>
+
+
+</mapper>     

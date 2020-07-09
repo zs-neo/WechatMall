@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.edu.neu.foodclient.mapper.EventMapper">
+
+  <select id="getAll" resultType="com.edu.neu.foodclient.entity.Event">
+    select * from event
+  </select>
+
+
+    <select id="fuzzySearch" parameterType="com.edu.neu.foodclient.entity.Event" resultType="com.edu.neu.foodclient.entity.Event">
+     select * from event
+        <where>
+            <if test="eventbegtime!=null and eventbegtime!='' ">
+                and eventbegtime &gt;=to_date(#{eventbegtime},'yyyy-mm-dd hh24:mi:ss')
+            </if>
+            <if test=" eventendtime!=null and eventendtime!=''">
+                and eventendtime &lt;=to_date(#{eventendtime},'yyyy-mm-dd hh24:mi:ss')
+            </if>
+            <if test="ename!=null and ename!=''">
+                and ename like '%'||#{ename}||'%'
+            </if>
+        </where>
+  </select>
+
+    <insert id="insertEvent" parameterType="com.edu.neu.foodclient.entity.Event">
+  	insert into event(eventid,ename,epic,edetailpic,edesc,estatus,eventbegtime,eventendtime)
+  	values((select max(eventid)+1 from event ),#{ename},#{epic},#{edetailpic},#{edesc},
+  	#{estatus},to_date(#{eventbegtime},'yyyy-mm-dd hh24:mi:ss')
+  	,to_date(#{eventendtime},'yyyy-mm-dd hh24:mi:ss'))
+  </insert>
+
+
+    <update id="updateStatus" parameterType="com.edu.neu.foodclient.entity.Event">
+        update event set estatus=#{estatus} where eventid=#{eventid}
+    </update>
+
+    <update id="updateEvent" parameterType="com.edu.neu.foodclient.entity.Event">
+        update event
+        <set>
+            <if test="ename!=null and ename!=''">
+                ename=#{ename},
+            </if>
+            <if test="epic!=null and epic!=''">
+                epic=#{epic},
+            </if>
+            <if test="edetailpic!=null and edetailpic!=''">
+                edetailpic=#{edetailpic},
+            </if>
+            <if test="edesc!=null and edesc!=''">
+                edesc=#{edesc},
+            </if>
+            <if test="estatus!=null and estatus!=''">
+                estatus=#{estatus},
+            </if>
+            <if test="eventbegtime!=null">
+                eventbegtime=to_date(#{eventbegtime},'yyyy-mm-dd hh24:mi:ss'),
+            </if>
+            <if test="eventendtime!=null">
+                eventendtime=to_date(#{eventendtime},'yyyy-mm-dd hh24:mi:ss'),
+            </if>
+        </set>
+        where eventid=#{eventid}
+
+    </update>
+
+    <delete id="deleteEvent" parameterType="int">
+  	     delete from event where eventid=#{value}
+  </delete>
+
+    <delete id="deleteBatch">
+      delete from event where eventid in
+  	     <foreach collection="eventids" item="eventid" separator="," open="(" close=")">
+        #{eventid}
+    </foreach>
+  </delete>
+
+</mapper>     

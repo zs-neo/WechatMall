@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<plugins>
+		<!-- 第三方插件 核心拦截器PageHelper所在的类路径 -->
+		<plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+	</plugins>
+</configuration>

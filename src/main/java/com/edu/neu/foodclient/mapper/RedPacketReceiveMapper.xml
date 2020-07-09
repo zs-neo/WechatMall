@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.edu.neu.foodclient.mapper.RedPacketReceiveMapper">
+
+  <select id="getByClientId" resultType="com.edu.neu.foodclient.entity.RedPacketReceive">
+    select * from redpacket_receive where clientid=#{clientid} and  createtime &gt;= (sysdate-7) and createtime &lt;= (sysdate)
+  </select>
+
+    <insert id="insert" parameterType="com.edu.neu.foodclient.entity.RedPacketReceive">
+  	insert into redpacket_receive(id,clientid,rpid,createtime,status)
+    values((select nvl(max(id),0)+1 from redpacket_receive ),#{clientid},#{rpid},to_date(#{createtime},'yyyy-mm-dd hh24:mi:ss')
+  	,0)
+  </insert>
+
+</mapper>     

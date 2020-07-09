@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.edu.neu.foodclient.mapper.CouponReceiveMapper">
+
+  <select id="getByClientId" resultType="com.edu.neu.foodclient.entity.CouponReceive">
+    select * from coupon_receive where clientid=#{clientid}
+  </select>
+
+    <insert id="insert" parameterType="com.edu.neu.foodclient.entity.CouponReceive">
+  	insert into coupon_receive(crid,clientid,couponid,createtime,status)
+    values((select nvl(max(crid),0)+1 from coupon_receive ),#{clientid},#{couponid},to_date(#{createtime},'yyyy-mm-dd hh24:mi:ss')
+  	,0)
+  </insert>
+
+</mapper>     

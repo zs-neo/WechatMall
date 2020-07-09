@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.edu.neu.foodclient.mapper.FRIMapper">
+
+  <select id="getAll" resultType="com.edu.neu.foodclient.entity.FullReductInfo">
+    select * from fullreductinfo
+  </select>
+
+    <update id="updateFRI" parameterType="com.edu.neu.foodclient.entity.FullReductInfo">
+        update fullreductinfo
+        <set>
+            <if test="frname!=null and frname!=''">
+                frname=#{frname},
+            </if>
+            <if test="frdesc!=null and frdesc!=''">
+                frdesc=#{frdesc},
+            </if>
+
+            <if test="frshare!=null and frshare!=''">
+                frshare=#{frshare},
+            </if>
+            <if test="frstatus!=null">
+                frstatus=#{frstatus},
+            </if>
+            <if test="frbegtime!=null">
+                frbegtime=to_date(#{frbegtime},'yyyy-mm-dd hh24:mi:ss'),
+            </if>
+            <if test="frendtime!=null">
+                frendtime=to_date(#{frendtime},'yyyy-mm-dd hh24:mi:ss'),
+            </if>
+        </set>
+        where frinfoid=1
+
+    </update>
+
+</mapper>     

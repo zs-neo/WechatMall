@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.edu.neu.foodclient.mapper.CouponMapper">
+
+  <select id="getAll" resultType="com.edu.neu.foodclient.entity.Coupon">
+    select * from coupon
+  </select>
+
+
+    <select id="fuzzySearch" parameterType="com.edu.neu.foodclient.entity.Coupon" resultType="com.edu.neu.foodclient.entity.Coupon">
+     select * from coupon
+        <where>
+            <if test="couponbegtime!=null and couponbegtime!='' ">
+                and couponbegtime &gt;=to_date(#{couponbegtime},'yyyy-mm-dd hh24:mi:ss')
+            </if>
+            <if test=" couponendtime!=null and couponendtime!=''">
+                and couponendtime &lt;=to_date(#{couponendtime},'yyyy-mm-dd hh24:mi:ss')
+            </if>
+            <if test="couponname!=null and couponname!=''">
+                and couponname like '%'||#{couponname}||'%'
+            </if>
+        </where>
+  </select>
+
+    <insert id="insertCoupon" parameterType="com.edu.neu.foodclient.entity.Coupon">
+  	insert into coupon(couponid,couponname,coupondesc,couponbegtime,couponendtime,couponstatus,couponamount,couponscore,coupongetnum,couponusednum,limituser)
+  	values((select max(couponid)+1 from COUPON ),#{couponname},#{coupondesc},to_date(#{couponbegtime},'yyyy-mm-dd hh24:mi:ss')
+  	,to_date(#{couponendtime},'yyyy-mm-dd hh24:mi:ss'),#{couponstatus},#{couponamount},#{couponscore},0,0,#{limituser})
+  </insert>
+
+
+    <update id="updateStatus" parameterType="com.edu.neu.foodclient.entity.Coupon">
+        update coupon set couponstatus=#{couponstatus} where couponid=#{couponid}
+    </update>
+
+    <update id="updateCoupon" parameterType="com.edu.neu.foodclient.entity.Coupon">
+        update coupon
+        <set>
+            <if test="couponname!=null and couponname!=''">
+                couponname=#{couponname},
+            </if>
+            <if test="coupondesc!=null and coupondesc!=''">
+                coupondesc=#{coupondesc},
+            </if>
+            <if test="couponbegtime!=null">
+                couponbegtime=to_date(#{couponbegtime},'yyyy-mm-dd hh24:mi:ss'),
+            </if>
+            <if test="couponendtime!=null">
+                couponendtime=to_date(#{couponendtime},'yyyy-mm-dd hh24:mi:ss'),
+            </if>
+            <if test="couponstatus!=null and couponstatus!=''">
+                couponstatus=#{couponstatus},
+            </if>
+            <if test="couponamount!=null and couponamount!=''">
+                couponamount=#{couponamount},
+            </if>
+            <if test="couponscore!=null and couponscore!=''">
+                couponscore=#{couponscore},
+            </if>
+            <if test="couponusednum!=null and couponusednum!=''">
+                couponusednum=#{couponusednum},
+            </if>
+            <if test="limituser!=null and limituser!=''">
+                limituser=#{limituser},
+            </if>
+
+        </set>
+        where couponid=#{couponid}
+
+    </update>
+
+    <delete id="deleteCoupon" parameterType="int">
+  	     delete from coupon where couponid=#{value}
+  </delete>
+
+    <delete id="deleteBatch">
+      delete from coupon where couponid in
+  	     <foreach collection="couponids" item="couponid" separator="," open="(" close=")">
+        #{couponid}
+    </foreach>
+  </delete>
+
+</mapper>     
