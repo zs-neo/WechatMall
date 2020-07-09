@@ -1,0 +1,152 @@
+{
+	"pages": [
+	// 	{
+	// 	"path": "pages/home/home",
+	// 	"style": {
+	// 		"navigationBarTitleText": "五凤楼",
+	// 		"navigationStyle": "custom"
+	// 	}
+	// }, 
+	{
+		"path": "pages/order/order",
+		"style": {
+			"navigationBarTitleText": "我的订单",
+			"disableScroll": true
+		}
+	}, {
+		"path": "pages/my/my",
+		"style": {
+			"navigationStyle": "custom"
+		}
+	}, {
+		"path": "pages/integrals/mall",
+		"style": {
+			"navigationBarTitleText": "积分商城"
+		}
+	}, {
+		"path": "pages/integrals/detail",
+		"style": {
+			"navigationBarTitleText": ""
+		}
+	}, {
+		"path": "pages/my/wallet",
+		"style": {
+			"navigationBarTitleText": ""
+		}
+	}, {
+		"path": "pages/my/mall",
+		"style": {}
+	}, {
+		"path": "pages/index/index",
+		"style": {
+			"navigationBarTitleText": "五凤楼",
+			"disableScroll": true
+		}
+	}, {
+		"path": "pages/mart/mart",
+		"style": {
+			"navigationStyle": "custom"
+		}
+	}, {
+		"path": "pages/my/code",
+		"style": {
+			"navigationStyle": "custom"
+		}
+	}, {
+		"path": "pages/my/info",
+		"style": {
+			"navigationBarTitleText": "个人资料"
+		}
+	}, {
+		"path": "pages/task-center/task-center",
+		"style": {
+			"navigationBarTitleText": "任务中心"
+		}
+	}, {
+		"path": "pages/integrals/scores",
+		"style": {
+			"navigationBarTitleText": "积分明细",
+			"disableScroll": true
+		}
+	}, {
+		"path": "pages/my/member",
+		"style": {
+			"navigationBarTitleText": "开通会员",
+			"navigationBarBackgroundColor": "#f6f6f6"
+		}
+	}, {
+		"path": "pages/addresses/addresses",
+		"style": {
+			"navigationBarTitleText": "收货地址"
+		}
+	}, {
+		"path": "pages/addresses/add",
+		"style": {
+			"navigationBarTitleText": "添加地址"
+		}
+	}, {
+		"path": "pages/pay/pay",
+		"style": {
+			"navigationBarTitleText": "订单结算"
+		}
+	}, {
+		"path": "pages/mart/detail",
+		"style": {
+			"navigationBarTitleText": "商品详情"
+		}
+	}, {
+		"path": "pages/home/group-dinner",
+		"style": {
+			"navigationBarTitleText": "企业团餐"
+		}
+	}, {
+		"path": "pages/order/detail",
+		"style": {
+			"navigationBarTitleText": "订单详情"
+		}
+	}, {
+		"path": "pages/pay/remark",
+		"style": {
+			"navigationBarTitleText": "填写备注"
+		}
+	}, {
+		"path": "pages/gifts/gifts",
+		"style": {
+			"navigationBarTitleText": "阿喜有礼"
+		}
+	}],
+	"tabBar": {
+		"color": "#999999",
+		"selectedColor": "#343434",
+		"borderStyle": "white",
+		"backgroundColor": "#F7F7F7",
+		"fontSize": "16px",
+		"iconWidth": "30px",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/images/tabbar/index.png",
+				"selectedIconPath": "static/images/tabbar/index_selected.png",
+				"text": "点单"
+			},
+			{
+				"pagePath": "pages/order/order",
+				"iconPath": "static/images/tabbar/order.png",
+				"selectedIconPath": "static/images/tabbar/order_selected.png",
+				"text": "订单"
+			},
+			{
+				"pagePath": "pages/my/my",
+				"iconPath": "static/images/tabbar/my.png",
+				"selectedIconPath": "static/images/tabbar/my_selected.png",
+				"text": "我的"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#FDFDFD"
+	}
+}
