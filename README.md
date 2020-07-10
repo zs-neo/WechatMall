@@ -1,5 +1,6 @@
 # WechatMall
 前端微信小程序，后端springboot+mybatis+oracle
+https://blog.csdn.net/weixin_42340366/article/details/107221013
 #### sql
 sql文件在sql文件夹内
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200709094932916.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjM0MDM2Ng==,size_16,color_FFFFFF,t_70)
